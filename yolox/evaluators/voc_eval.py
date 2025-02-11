@@ -85,6 +85,9 @@ def voc_eval(
         lines = f.readlines()
     imagenames = [x.strip() for x in lines]
 
+    # escape
+    classname = classname.replace("/", "_")
+
     if not os.path.isfile(cachefile):
         # load annots
         recs = {}

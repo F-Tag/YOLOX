@@ -252,6 +252,7 @@ class VOCDetection(CacheDataset):
 
     def _write_voc_results_file(self, all_boxes):
         for cls_ind, cls in enumerate(VOC_CLASSES):
+            cls = cls.replace("/", "_")
             cls_ind = cls_ind
             if cls == "__background__":
                 continue
@@ -299,6 +300,8 @@ class VOCDetection(CacheDataset):
 
             if cls == "__background__":
                 continue
+
+            cls = cls.replace("/", "_")
 
             filename = self._get_voc_results_file_template().format(cls)
             rec, prec, ap = voc_eval(
