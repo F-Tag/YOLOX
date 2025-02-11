@@ -12,7 +12,8 @@ import cv2
 import torch
 
 from yolox.data.data_augment import ValTransform
-from yolox.data.datasets import COCO_CLASSES
+# from yolox.data.datasets import COCO_CLASSES
+from yolox.data.datasets import VOC_CLASSES as COCO_CLASSES
 from yolox.exp import get_exp
 from yolox.utils import fuse_model, get_model_info, postprocess, vis
 
@@ -280,7 +281,7 @@ def main(exp, args):
         else:
             ckpt_file = args.ckpt
         logger.info("loading checkpoint")
-        ckpt = torch.load(ckpt_file, map_location="cpu")
+        ckpt = torch.load(ckpt_file, map_location="cpu", weights_only=False)
         # load the model state dict
         model.load_state_dict(ckpt["model"])
         logger.info("loaded checkpoint done.")

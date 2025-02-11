@@ -3,6 +3,8 @@
 # Copyright (c) Megvii, Inc. and its affiliates.
 
 # VOC_CLASSES = ( '__background__', # always index 0
+
+"""
 VOC_CLASSES = (
     "aeroplane",
     "bicycle",
@@ -25,3 +27,6 @@ VOC_CLASSES = (
     "train",
     "tvmonitor",
 )
+"""
+
+VOC_CLASSES = ["Car", "Truck", "Pedestrian", "VanSUV", "Bicycle", "Bus", "Cyclist", "UtilityVehicle", "MotorBiker", "Motorcycle", "Trailer", "Animal", "CaravanTransporter", "EmergencyVehicle"]

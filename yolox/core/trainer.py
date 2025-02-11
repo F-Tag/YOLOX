@@ -113,6 +113,15 @@ class Trainer:
         self.scaler.step(self.optimizer)
         self.scaler.update()
 
+        # cramp parameters for fp16 convert
+        for p in self.model.parameters():
+            flag = p.data > 1.0e4
+            p.data.masked_fill_(flag, 1.0e4)
+            flag = p.data < -1.0e4
+            p.data.masked_fill_(flag, -1.0e4)
+            flag = (p.data > -1e-7) & (p.data < 1e-7)
+            p.data.masked_fill_(flag, 0)
+
         if self.use_model_ema:
             self.ema_model.update(self.model)
 

@@ -2,6 +2,18 @@
 # -*- coding:utf-8 -*-
 # Copyright (c) Megvii, Inc. and its affiliates.
 
+# single process settings
+import os
+
+os.environ["OMP_NUM_THREADS"] = "1"
+os.environ["OPENBLAS_NUM_THREADS"] = "1"
+os.environ["MKL_NUM_THREADS"] = "1"
+os.environ["VECLIB_MAXIMUM_THREADS"] = "1"
+os.environ["NUMEXPR_NUM_THREADS"] = "1"
+os.environ["OPENCV_FOR_THREADS_NUM"] = "1"
+os.environ["OPENCV_FFMPEG_THREADS"] = "1"
+
+# import packages
 import argparse
 import random
 import warnings
