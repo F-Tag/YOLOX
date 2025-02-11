@@ -27,7 +27,8 @@ class Exp(MyExp):
 
         # fine tuning
         self.act = "relu6"
-        self.num_classes = 14
+        # self.num_classes = 14
+        self.num_classes = 20
         self.min_lr_ratio = 0.05 / 100
         self.basic_lr_per_img = 0.01 / 64.0 / 100
 
@@ -44,7 +45,8 @@ class Exp(MyExp):
 
         return VOCDetection(
             data_dir=os.path.join(get_yolox_datadir(), "2d_bbox_from_3d"),
-            image_sets=[('2007', 'train')],
+            # image_sets=[('2007', 'train')],
+            image_sets=[('2012', 'train')],
             img_size=self.input_size,
             preproc=TrainTransform(
                 max_labels=50,
@@ -60,7 +62,8 @@ class Exp(MyExp):
 
         return VOCDetection(
             data_dir=os.path.join(get_yolox_datadir(), "2d_bbox_from_3d"),
-            image_sets=[('2007', 'test')],
+            # image_sets=[('2007', 'test')],
+            image_sets=[('2012', 'test')],
             img_size=self.test_size,
             preproc=ValTransform(legacy=legacy),
         )
