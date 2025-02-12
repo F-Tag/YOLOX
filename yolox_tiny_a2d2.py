@@ -16,8 +16,10 @@ class Exp(MyExp):
         self.depth = 0.33
         self.width = 0.375
         self.input_size = (416, 416)
-        self.mosaic_scale = (0.5, 1.5)
-        self.random_size = (10, 20)
+        self.mosaic_scale = (0.1, 2)
+        self.mixup_scale = (0.5, 1.5)
+        # self.random_size = (10, 20)
+        self.multiscale_range = 5
         self.test_size = (416, 416)
         self.exp_name = os.path.split(os.path.realpath(__file__))[1].split(".")[0] + datetime.now().strftime('_%Y%m%d%H%M%S')
         # self.enable_mixup = False
@@ -38,7 +40,7 @@ class Exp(MyExp):
 
         # for debug
         # self.eval_interval = 1
-        # self.max_epoch = 15
+        # self.max_epoch = 50
 
     def get_dataset(self, cache: bool, cache_type: str = "ram"):
         from yolox.data import VOCDetection, TrainTransform
